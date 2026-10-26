@@ -290,7 +290,7 @@ footer .mono{font-family:var(--f-mono);font-size:12px}
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="btn btn-primary btn-sm" href="https://hirveyash.github.io/Yash_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+  <a class="btn btn-primary btn-sm" href="Yash_Hirve_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
 </nav>
 
 <main id="top">
@@ -299,7 +299,7 @@ footer .mono{font-family:var(--f-mono);font-size:12px}
       <div class="hero-copy">
         <div class="status glass"><i></i>Open to Cloud Security &amp; DevSecOps roles</div>
         <h1>I secure the cloud before it ships.</h1>
-        <p class="lede">I'm Yash, a cybersecurity grad student at Yeshiva University and ex-Amazonian. I build tools that catch Terraform misconfigurations in pull requests and connect threats across AWS, Azure and GCP.</p>
+        <p class="lede">I'm Yash, a cybersecurity grad student at Yeshiva University and ex-Amazon. I build tools that catch Terraform misconfigurations in pull requests and triage threats across AWS, Azure and GCP with a local AI analyst.</p>
         <div class="cta">
           <a class="btn btn-primary" href="#work">See the work</a>
           <a class="btn btn-glass" href="https://github.com/hirveyash" target="_blank" rel="noopener">GitHub ↗</a>
@@ -354,32 +354,31 @@ footer .mono{font-family:var(--f-mono);font-size:12px}
 
         <article class="project glass tilt">
           <div class="p-copy">
-            <div class="p-kicker"><span class="dot" style="background:var(--accent-2)"></span>Detection · Incident response</div>
-            <h3>CloudSentinel</h3>
-            <p class="tagline">Multi-cloud threat detection that turns scattered alerts into one incident.</p>
+            <div class="p-kicker"><span class="dot" style="background:var(--accent-2)"></span>SOC · Detection · AI triage</div>
+            <h3>Cloud Sentinel</h3>
+            <p class="tagline">A zero-cost multi-cloud SOC with local-LLM triage and a human hold line.</p>
             <ul class="p-points">
-              <li><span>Normalizes <b>AWS GuardDuty</b>, <b>Azure Defender for Cloud</b> and <b>GCP Security Command Center</b> findings into one schema.</span></li>
-              <li><span>Correlates events by source IP and identity into <b>cross-cloud incidents</b>, with explainable 0–100 risk scores.</span></li>
-              <li><span>Analyst-approved response actions, each written to an authenticated audit log.</span></li>
+              <li><span>Normalizes <b>AWS Security Hub</b>, <b>GCP Security Command Center</b> and <b>Microsoft Defender for Cloud</b> findings and correlates them by attacker IP into <b>multi-cloud incidents</b>.</span></li>
+              <li><span>A <b>local Llama 3.1 8B</b> (Ollama) explains why each incident was flagged and previews a playbook. Evidence-only, schema-validated, fixed <b>MITRE ATT&amp;CK</b> mapping, and no data leaves the machine.</span></li>
+              <li><span>Every incident holds until an analyst records a justified decision, written to an <b>append-only</b> SQLite audit trail.</span></li>
             </ul>
-            <div class="tags"><span class="tag">TypeScript</span><span class="tag">Next.js</span><span class="tag">AWS SDK</span><span class="tag">Vitest</span></div>
-            <a class="p-link" href="https://github.com/hirveyash/CloudSentinel" target="_blank" rel="noopener">View on GitHub ↗</a>
+            <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">SQLite</span><span class="tag">Ollama</span></div>
+            <a class="p-link" href="https://github.com/hirveyash/cloud-sentinel-soc" target="_blank" rel="noopener">View on GitHub ↗</a>
           </div>
-          <div class="pane" aria-label="Example CloudSentinel cross-cloud incident">
-            <div class="pane-bar"><i></i><i></i><i></i><span>incidents / correlated</span></div>
+          <div class="pane" aria-label="Example Cloud Sentinel multi-cloud incident on hold">
+            <div class="pane-bar"><i></i><i></i><i></i><span>live incidents / hold</span></div>
             <div class="corr">
-              <div class="sources">
-                <div class="src"><b>AWS</b><span>GuardDuty</span><em>root login failed</em></div>
-                <div class="src"><b>Azure</b><span>Defender</span><em>anomalous data access</em></div>
-                <div class="src"><b>GCP</b><span>SCC</span><em>exfiltration attempt</em></div>
+              <div class="sources" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+                <div class="src"><b>Azure</b><span>Defender for Cloud</span><em>failed RDP sign-ins · jump-host-01</em></div>
+                <div class="src"><b>GCP</b><span>Security Command Center</span><em>SSH brute force · bastion-gcp</em></div>
               </div>
-              <svg class="wires" viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0 C50 30 150 26 150 56"/><path d="M150 0 L150 56"/><path d="M250 0 C250 30 150 26 150 56"/></svg>
+              <svg class="wires" viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><path d="M75 0 C75 30 150 26 150 56"/><path d="M225 0 C225 30 150 26 150 56"/></svg>
               <div class="incident">
-                <div><div class="sev" style="color:var(--fg-2)"><b>CRITICAL</b> cross-cloud</div><div class="id">CORR-IP-203-0-113-77</div></div>
-                <div class="score"><b>100</b><span>RISK / 100</span></div>
-                <div class="why">critical +80 · failed outcome +10 · rule hit +10</div>
+                <div><div class="sev" style="color:var(--fg-2)"><b>HIGH</b> multi-cloud</div><div class="id">Repeated brute force from 203.0.113.47</div></div>
+                <div class="score"><b>HOLD</b><span>AWAITING ANALYST</span></div>
+                <div class="why">MITRE ATT&amp;CK T1110 · briefing by llama3.1:8b, local · 7 events</div>
               </div>
-              <div class="actions"><span>Quarantine resource</span><span>Revoke credentials</span></div>
+              <div class="actions"><span>Investigate</span><span>Keep open</span><span>Resolve</span></div>
             </div>
           </div>
         </article>
@@ -438,7 +437,7 @@ footer .mono{font-family:var(--f-mono);font-size:12px}
       <div class="skills">
         <div class="skill glass">
           <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5z"/></svg>Cloud &amp; DevSecOps</h3>
-          <div class="chips"><span class="chip">AWS IAM</span><span class="chip">EC2 · S3 · VPC</span><span class="chip">KMS</span><span class="chip">CloudWatch</span><span class="chip">GuardDuty</span><span class="chip">Azure Defender for Cloud</span><span class="chip">GCP Security Command Center</span><span class="chip">Terraform</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GitHub Actions</span></div>
+          <div class="chips"><span class="chip">AWS IAM</span><span class="chip">EC2 · S3 · VPC</span><span class="chip">KMS</span><span class="chip">CloudWatch</span><span class="chip">Security Hub</span><span class="chip">GuardDuty</span><span class="chip">Azure Defender for Cloud</span><span class="chip">GCP Security Command Center</span><span class="chip">Terraform</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GitHub Actions</span></div>
         </div>
         <div class="skill glass">
           <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Security &amp; Frameworks</h3>
@@ -512,7 +511,7 @@ footer .mono{font-family:var(--f-mono);font-size:12px}
           <a class="btn btn-glass btn-sm" href="https://github.com/hirveyash" target="_blank" rel="noopener">GitHub ↗</a>
           <a class="btn btn-glass btn-sm" href="https://www.skills.google/public_profiles/3eecb65d-6375-477c-bd76-0a5136016b76" target="_blank" rel="noopener">Google Skills ↗</a>
           <a class="btn btn-glass btn-sm" href="https://app.letsdefend.io/user/jerryhuntss" target="_blank" rel="noopener">LetsDefend ↗</a>
-          <a class="btn btn-glass btn-sm" href="https://hirveyash.github.io/Yash_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+          <a class="btn btn-glass btn-sm" href="Yash_Hirve_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
         </div>
       </div>
     </div>
@@ -635,10 +634,10 @@ const TERM = [
   ['✖ ', 'HIGH TG-NET-001 aws_security_group.web', '#FFC46B'],
   ['  ', 'port 22 open to 0.0.0.0/0', '#7C8796'],
   ['✔ ', '27 passed · 2 findings · sarif written', '#6BE7A8'],
-  ['$ ', 'cloudsentinel correlate --last 24h', '#86D8FF'],
-  ['', 'aws guardduty · azure defender · gcp scc', '#7C8796'],
-  ['⚑ ', 'CORR-IP-203-0-113-77 · risk 100/100', '#FF8A8A'],
-  ['$ ', 'awaiting analyst approval_', '#86D8FF'],
+  ['$ ', 'python inject.py brute-force', '#86D8FF'],
+  ['', 'azure defender → gcp scc · 203.0.113.47', '#7C8796'],
+  ['⚑ ', 'Multi-cloud brute force · T1110 · HOLD', '#FF8A8A'],
+  ['$ ', 'llama3.1:8b briefing ready_', '#86D8FF'],
 ];
 function screenTexture() {
   const c = document.createElement('canvas'); c.width = 640; c.height = 400;
